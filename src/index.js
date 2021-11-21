@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import Dictionary from './dictionary';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <App />,
+  <Dictionary/>,
   document.getElementById('root')
 );
 
