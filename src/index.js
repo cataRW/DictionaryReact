@@ -4,7 +4,7 @@ import Dictionary from './dictionary';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <Dictionary/>,
+  <Dictionary />,
   document.getElementById('root')
 );
 
