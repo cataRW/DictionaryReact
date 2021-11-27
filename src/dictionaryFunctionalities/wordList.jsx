@@ -5,7 +5,7 @@ function WordList(props) {
     if(item === props.word && !props.choice) {
       return <li style={{color: 'red'}} key={item.toString()}> {item} </li>
     }
-    return <li> {item} </li>
+    return <li key={item.toString()}> {item} </li>
   })
 
   return (
