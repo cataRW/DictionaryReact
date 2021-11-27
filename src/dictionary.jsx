@@ -23,6 +23,7 @@ function Dictionary() {
   const updateChoice = () => {
     let choice = userChoice ? false : true
     setUserChoice(choice)
+    setCurrentWord('')
   }
 
   let display
