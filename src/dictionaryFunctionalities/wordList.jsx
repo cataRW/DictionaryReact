@@ -1,20 +1,17 @@
 import React from 'react'
 
 function WordList(props) {
-  let message = props.currentWord !== '' ? `Your word isn't in the list` : ''
-  let list = props.wordList.map((item, id) => {
-    if(item === props.currentWord) {
-      message = 'Your word is in list, is the red one'
-      return <li key={id} style={{color: 'red'}}>{item}</li>
+  let list = props.list.map(item => {
+    if(item === props.word && props.choice !== 'add') {
+      return <li style={{color: 'red'}} key={item.toString()}> {item} </li>
     }
-    return <li key={id}>{item}</li>
+    return <li> {item} </li>
   })
 
-  return(
-    <>
-      <p>{message}</p>
+  return (
+    <div>
       <ol>{list}</ol>
-    </>
+    </div>
   )
 }
 
