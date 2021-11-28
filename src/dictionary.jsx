@@ -8,12 +8,8 @@ function Dictionary() {
   const[currentWord, setCurrentWord] = useState('')
   const[userChoice, setUserChoice] = useState(true)
 
-  const updateWordList = (e) => {
-    e.preventDefault()
-    if(currentWord.length > 0 && !wordList.includes(currentWord)) {
-      setWordList(prevList => [...prevList, currentWord])
-    }
-    setCurrentWord('')
+  const updateWordList = (word) => {
+    setWordList(prevList => [...prevList, word])
   }
 
   const updateCurrentWord = (e) => {
@@ -28,9 +24,9 @@ function Dictionary() {
 
   let display
   if(userChoice) {
-    display = <AddWords word={currentWord} updateWord={updateCurrentWord} updateWordList={updateWordList} />
+    display = <AddWords  updateWordList={updateWordList} list={wordList} />
   }else {
-    display = <SearchWords word={currentWord} updateWord={updateCurrentWord} list={wordList} /> 
+    display = <SearchWords updateWord={updateCurrentWord} list={wordList} word={currentWord}/> 
   }
 
   return(
