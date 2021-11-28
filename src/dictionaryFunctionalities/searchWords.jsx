@@ -12,7 +12,7 @@ function SearchWords(props) {
     <>
       <label>
         Search word
-        <input value={props.word} onChange={props.updateWord}/>
+        <input onChange={props.updateWord} autoFocus={true}/>
       </label>
       <p>{userMessage}</p>
     </>
@@ -20,3 +20,4 @@ function SearchWords(props) {
 }
 
 export default SearchWords
+
