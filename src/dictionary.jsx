@@ -5,28 +5,22 @@ import WordList from './dictionaryFunctionalities/wordList'
 
 function Dictionary() {
   const[wordList, setWordList] = useState([])
-  const[currentWord, setCurrentWord] = useState('')
   const[userChoice, setUserChoice] = useState(true)
 
   const updateWordList = (word) => {
     setWordList(prevList => [...prevList, word])
   }
 
-  const updateCurrentWord = (e) => {
-    setCurrentWord(e.target.value)
-  }
-
   const updateChoice = () => {
     let choice = userChoice ? false : true
     setUserChoice(choice)
-    setCurrentWord('')
   }
 
   let display
   if(userChoice) {
     display = <AddWords  updateWordList={updateWordList} list={wordList} />
   }else {
-    display = <SearchWords updateWord={updateCurrentWord} list={wordList} word={currentWord}/> 
+    display = <SearchWords list={wordList} />
   }
 
   return(
@@ -35,7 +29,7 @@ function Dictionary() {
       <button onClick={updateChoice}> {userChoice ? 'Search' : 'Add'} </button>
       <br></br>
       {display}
-      <WordList word={currentWord} list={wordList} choice={userChoice} />
+      <WordList list={wordList} />
     </fieldset>
   )
 }
