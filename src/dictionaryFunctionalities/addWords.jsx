@@ -14,7 +14,7 @@ function AddWords(props) {
     <form onSubmit={addInList}>
       <label>
         Add word
-        <input className='input-add' placeHolder='add...'  autoFocus={false}/>
+        <input className='input-add' placeholder='add...'  autoFocus={false}/>
         <input type='submit' value='send'/>
       </label>
     </form>
