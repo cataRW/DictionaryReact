@@ -1,18 +1,21 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 function SearchWords(props) {
-  let userMessage =''
-  if(props.word !== '' && props.list.includes(props.word)) {
-    userMessage = 'The word is in list'
-  }else if(props.word !== '') {
-    userMessage = 'The word is not in list'
+  const[userMessage, setUserMessage] = useState(``)
+
+  const check = (e) => {
+    if(props.list.includes(e.target.value)) {
+      setUserMessage(`Your word is in list`)
+    }else {
+      setUserMessage(`Your word isn't in list`)
+    }
   }
 
   return (
     <>
       <label>
         Search word
-        <input onChange={props.updateWord} autoFocus={true}/>
+        <input onChange={check} placeholder='search...' autoFocus={true} />
       </label>
       <p>{userMessage}</p>
     </>
@@ -20,4 +23,3 @@ function SearchWords(props) {
 }
 
 export default SearchWords
-
