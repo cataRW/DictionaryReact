@@ -1,24 +1,30 @@
 import React from 'react'
 
 function AddWords(props) {
-  const addInList = (e) => {
+  const addWordInList = (e) => {
     e.preventDefault()
-    let wordToAdd = document.querySelector('.input-add').value
-    if(wordToAdd.length > 0 && !props.list.includes(wordToAdd)) {
-      props.updateWordList(wordToAdd)
+
+    let word = document.querySelector('.wordToAdd').value
+    let msg = document.querySelector('.add-message')
+
+    if(word.length > 0) {
+      props.updateList(word)
+    }else {
+      msg.innerText = 'Type at least one letter'
+      setTimeout(() => msg.innerText = '', 1000)
     }
-    e.currentTarget.reset()
+
+    e.target.reset()
   }
 
   return (
-    <form onSubmit={addInList}>
-      <label>
-        Add word
-        <input className='input-add' placeholder='add...'  autoFocus={false}/>
-        <input type='submit' value='send'/>
-      </label>
+    <form onSubmit={addWordInList}>
+      <input className='wordToAdd' placeholder='add...' autoFocus={true}/>
+      <input type='submit' value='add' />
+      <p className='add-message'> </p>
     </form>
   )
 }
 
 export default AddWords
+
