@@ -1,24 +1,31 @@
-import React, {useState} from 'react'
+import React from 'react'
 
 function SearchWords(props) {
-  const[userMessage, setUserMessage] = useState(``)
+  const checkWord = (e) => {
+    e.preventDefault()
 
-  const check = (e) => {
-    if(props.list.includes(e.target.value)) {
-      setUserMessage(`Your word is in list`)
+    let word = document.querySelector('.wordToCheck')
+    let msg = document.querySelector('.search-message')
+
+    if(props.list.includes(word.value)) {
+      msg.innerText = 'Your word is in list'
     }else {
-      setUserMessage(`Your word isn't in list`)
+      msg.innerText = `Your word ins't in list`
     }
+
+    setTimeout(() => {
+      msg.innerText=''
+    }, 1000)
+
+    e.target.reset()
   }
 
   return (
-    <>
-      <label>
-        Search word
-        <input onChange={check} placeholder='search...' autoFocus={true} />
-      </label>
-      <p>{userMessage}</p>
-    </>
+    <form onSubmit={checkWord}>
+      <input className='wordToCheck' placeholder='search...' />
+      <input type='submit' value='search' />
+      <p className='search-message'></p>
+    </form>
   )
 }
 
